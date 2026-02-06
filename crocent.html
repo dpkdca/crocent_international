@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GSAP Scroll Panels with Typewriter Animation</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=KoHo:wght@300;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: "KoHo", sans-serif;
+    }
+
+    .container {
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+    }
+
+    .panel {
+      scroll-snap-align: start;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+      font-size: 2rem;
+      color: #fff;
+    }
+
+    /* Background colors */
+    .panel:nth-child(1) { background: #111; }
+    .panel:nth-child(2) { background: #5B2C6F; }
+    .panel:nth-child(3) { background: #1F618D; }
+    .panel:nth-child(4) { background: #117A65; }
+    .panel:nth-child(5) { background: #B9770E; }
+    .panel:nth-child(6) { background: #922B21; }
+    .panel:nth-child(7) { background: #2E4053; }
+
+    h1 {
+      font-size: 65px;
+      font-weight: 700;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.5s ease;
+      border-right: 3px solid transparent;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .logo {
+      position: absolute;
+      right: 10%;
+      bottom: 10%;
+      transform: scale(0.8);
+      opacity: 0;
+      transition: transform 0.6s ease, opacity 0.6s ease;
+    }
+
+    .logo img {
+      width: 150px;
+    }
+
+    .site-button {
+      position: absolute;
+      bottom: 10%;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .site-button a {
+      display: flex;
+      align-items: center;
+      column-gap: 25px;
+      font-family: "Inter", sans-serif;
+      font-weight: 400;
+      font-size: 19px;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .site-button a span {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #fff;
+      border-radius: 100%;
+      transition: border-color 0.3s ease;
+    }
+
+    .site-button a span svg {
+      transition: transform 0.3s ease;
+      transform-origin: center;
+    }
+
+    .site-button a:hover span svg {
+      transform: rotate(44deg);
+    }
+
+.subheader {
+  position: absolute;
+  left: 5%;
+  font-size: 18px;
+  color: #eeb11e;
+  text-transform: uppercase;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-left: 1px solid #efb221;
+  justify-content: flex-start;
+}
+
+.subheader span {
+  position: absolute;
+  left: -80px;
+  transform: rotate(90deg);
+  width: 160px;
+  color: #eeb11e;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+
+
+     .panel:nth-child(1) .subheader span { background: #111; }
+    .panel:nth-child(2) .subheader span { background: #5B2C6F; }
+    .panel:nth-child(3) .subheader span { background: #1F618D; }
+    .panel:nth-child(4) .subheader span { background: #117A65; }
+    .panel:nth-child(5) .subheader span { background: #B9770E; }
+    .panel:nth-child(6) .subheader span { background: #922B21; }
+    .panel:nth-child(7) .subheader span { background: #2E4053; }
+
+    /* Blinking caret for typewriter effect */
+    .typing {
+      border-right: 3px solid #EEAF18;
+      animation: blink 0.8s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <section class="panel">
+      <h1>Crocent International</h1>
+      <div class="site-button">
+        <a href="#"><span><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.6008 19L16.7005 3.91482V17.6291H19V0H1.37086V2.29945H15.0852L0 17.3992L1.6008 19Z" fill="#EEAF18"/></svg></span><p>Explore Now</p></a>
+      </div>
+      <div class="logo"><img src="images/logo5.png"></div>
+     <div class="subheader">
+      <span class="typing-text">scroll down</span>
+    </div>
+    </section>
+
+    <section class="panel">
+      <h1>Gym Ella</h1>
+      <div class="site-button">
+        <a href="#"><span><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.6008 19L16.7005 3.91482V17.6291H19V0H1.37086V2.29945H15.0852L0 17.3992L1.6008 19Z" fill="#EEAF18"/></svg></span><p>Explore Now</p></a>
+      </div>
+      <div class="logo"><img src="images/logo1.png"></div>
+       <div class="subheader">
+      <span class="typing-text">scroll down</span>
+    </div>
+    </section>
+
+    <section class="panel">
+      <h1>Crocent Web Services</h1>
+      <div class="site-button">
+        <a href="#"><span><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.6008 19L16.7005 3.91482V17.6291H19V0H1.37086V2.29945H15.0852L0 17.3992L1.6008 19Z" fill="#EEAF18"/></svg></span><p>Explore Now</p></a>
+      </div>
+      <div class="logo"><img src="images/logo2.png"></div>
+       <div class="subheader">
+      <span class="typing-text">scroll down</span>
+    </div>
+    </section>
+
+    <section class="panel">
+      <h1>Crocent Hello Tech</h1>
+      <div class="site-button">
+        <a href="#"><span><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.6008 19L16.7005 3.91482V17.6291H19V0H1.37086V2.29945H15.0852L0 17.3992L1.6008 19Z" fill="#EEAF18"/></svg></span><p>Explore Now</p></a>
+      </div>
+      <div class="logo"><img src="images/logo3.png"></div>
+       <div class="subheader">
+      <span class="typing-text">scroll down</span>
+    </div>
+    </section>
+
+    <section class="panel">
+      <h1>Crocent Studios</h1>
+      <div class="site-button">
+        <a href="#"><span><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.6008 19L16.7005 3.91482V17.6291H19V0H1.37086V2.29945H15.0852L0 17.3992L1.6008 19Z" fill="#EEAF18"/></svg></span><p>Explore Now</p></a>
+      </div>
+      <div class="logo"><img src="images/logo4.png"></div>
+       <div class="subheader">
+      <span class="typing-text">scroll down</span>
+    </div>
+    </section>
+
+    <section class="panel">
+      <h1>Crocent Fitness</h1>
+      <div class="site-button">
+        <a href="#"><span><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.6008 19L16.7005 3.91482V17.6291H19V0H1.37086V2.29945H15.0852L0 17.3992L1.6008 19Z" fill="#EEAF18"/></svg></span><p>Explore Now</p></a>
+      </div>
+      <div class="logo"><img src="images/logo6.png"></div>
+       <div class="subheader">
+      <span class="typing-text">scroll down</span>
+    </div>
+    </section>
+
+    <section class="panel">
+      <h1>Crocent Fame Finder</h1>
+      <div class="site-button">
+        <a href="#"><span><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.6008 19L16.7005 3.91482V17.6291H19V0H1.37086V2.29945H15.0852L0 17.3992L1.6008 19Z" fill="#EEAF18"/></svg></span><p>Explore Now</p></a>
+      </div>
+      <div class="logo"><img src="images/logo7.png"></div>
+       <div class="subheader">
+      <span class="typing-text">scroll down</span>
+    </div>
+    </section>
+  </div>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Typewriter function
+    function typeWriter(el, text, speed = 100) {
+      el.classList.add("typing");
+      el.textContent = "";
+      let i = 0;
+      let timer = setInterval(() => {
+        el.textContent += text.charAt(i);
+        i++;
+        if (i >= text.length) {
+          clearInterval(timer);
+          el.classList.remove("typing");
+        }
+      }, speed);
+    }
+
+    // Animate each section on scroll
+    document.querySelectorAll(".panel").forEach((panel) => {
+      const h1 = panel.querySelector("h1");
+      const originalText = h1.textContent;
+      h1.textContent = "";
+
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: panel,
+          scroller: ".container",
+          start: "top center",
+          toggleActions: "play reverse play reverse",
+          onEnter: () => typeWriter(h1, originalText),
+          onEnterBack: () => typeWriter(h1, originalText),
+        },
+      });
+
+      tl.to(h1, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0)
+        .to(panel.querySelector(".site-button"), { opacity: 1, y: 0, duration: 0.8, delay: 1.5, ease: "power3.out" }, 0)
+        .to(panel.querySelector(".logo"), { opacity: 1, scale: 1, duration: 1, delay: 0.3, ease: "back.out(1.7)" }, 0);
+    });
+
+
+    // Animate subheader border and text
+document.querySelectorAll(".panel").forEach((panel) => {
+  const sub = panel.querySelector(".subheader");
+
+  if (sub) {
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: panel,
+        scroller: ".container",
+        start: "top center",
+        toggleActions: "play reverse play reverse",
+      },
+    });
+
+    tl.fromTo(sub.querySelector("::before"), {}, {}); // (pseudo workaround below)
+
+    // Animate the border line drawing (using CSS variable approach)
+    tl.fromTo(sub, 
+      { "--borderHeight": 0 }, 
+      { 
+        "--borderHeight": "100%",
+        duration: 1,
+        ease: "power2.out",
+        onUpdate: function() {
+          // const val = tl.progress() * 100;
+          const val = tl.progress() * 100;
+          sub.style.setProperty("--borderHeight", `${val}%`);
+          sub.style.setProperty("border-image", `linear-gradient(to bottom, #efb221 ${val}%, transparent ${val}%) 1`);
+        }
+      }, 0
+    );
+
+    // Animate text fade-in slightly after
+    tl.to(sub.querySelector("span"), { opacity: 1, delay: 0.2, duration: 0.6 }, 0.5);
+  }
+});
+
+  </script>
+</body>
+</html>

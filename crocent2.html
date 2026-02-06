@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GSAP Scroll Panels with Typewriter Animation</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=KoHo:wght@300;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: "KoHo", sans-serif;
+    }
+
+    .container {
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+    }
+
+    .panel {
+      scroll-snap-align: start;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+      font-size: 2rem;
+      color: #fff;
+    }
+
+    /* Background colors */
+    .panel:nth-child(1) { background: #111; }
+    .panel:nth-child(2) { background: #5B2C6F; }
+    .panel:nth-child(3) { background: #1F618D; }
+    .panel:nth-child(4) { background: #117A65; }
+    .panel:nth-child(5) { background: #B9770E; }
+    .panel:nth-child(6) { background: #922B21; }
+    .panel:nth-child(7) { background: #2E4053; }
+
+    h1 {
+      font-size: 65px;
+      font-weight: 700;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.5s ease;
+      border-right: 3px solid transparent;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .logo {
+      position: absolute;
+      right: 10%;
+      bottom: 10%;
+      transform: scale(0.8);
+      opacity: 0;
+      transition: transform 0.6s ease, opacity 0.6s ease;
+    }
+
+    .logo img {
+      width: 150px;
+    }
+
+    .site-button {
+      position: absolute;
+      bottom: 10%;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .site-button a {
+      display: flex;
+      align-items: center;
+      column-gap: 25px;
+      font-family: "Inter", sans-serif;
+      font-weight: 400;
+      font-size: 19px;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .site-button a span {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #fff;
+      border-radius: 100%;
+      transition: border-color 0.3s ease;
+    }
+
+    .site-button a span svg {
+      transition: transform 0.3s ease;
+      transform-origin: center;
+    }
+
+    .site-button a:hover span svg {
+      transform: rotate(44deg);
+    }
+
+.subheader {
+  position: absolute;
+  left: 5%;
+  font-size: 18px;
+  color: #eeb11e;
+  text-transform: uppercase;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-left: 1px solid #efb221;
+  justify-content: flex-start;
+}
+
+.subheader span {
+  position: absolute;
+  left: -80px;
+  transform: rotate(90deg);
+  width: 160px;
+  color: #eeb11e;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+
+
+     .panel:nth-child(1) .subheader span { background: #111; }
+    .panel:nth-child(2) .subheader span { background: #5B2C6F; }
+    .panel:nth-child(3) .subheader span { background: #1F618D; }
+    .panel:nth-child(4) .subheader span { background: #117A65; }
+    .panel:nth-child(5) .subheader span { background: #B9770E; }
+    .panel:nth-child(6) .subheader span { background: #922B21; }
+    .panel:nth-child(7) .subheader span { background: #2E4053; }
+
+    /* Blinking caret for typewriter effect */
+    .typing {
+      border-right: 3px solid #EEAF18;
+      animation: blink 0.8s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <section class="panel">
+      <h1>Crocent International</h1>
+      <div class="site-button">
+        <a href="#"><span><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.6008 19L16.7005 3.91482V17.6291H19V0H1.37086V2.29945H15.0852L0 17.3992L1.6008 19Z" fill="#EEAF18"/></svg></span><p>Explore Now</p></a>
+      </div>
+      <div class="logo"><img src="images/logo5.png"></div>
+     <div class="subheader">
+      <span class="typing-text">scroll down</span>
+    </div>
+    </section>
+
+    <section class="panel">
+      <h1>Gym Ella</h1>
+      <div class="site-button">
+        <a href="#"><span><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.6008 19L16.7005 3.91482V17.6291H19V0H1.37086V2.29945H15.0852L0 17.3992L1.6008 19Z" fill="#EEAF18"/></svg></span><p>Explore Now</p></a>
+      </div>
+      <div class="logo"><img src="images/logo1.png"></div>
+       <div class="subheader">
+      <span class="typing-text">scroll down</span>
+    </div>
+    </section>
+
+    <section class="panel">
+      <h1>Crocent Web Services</h1>
+      <div class="site-button">
+        <a href="#"><span><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.6008 19L16.7005 3.91482V17.6291H19V0H1.37086V2.29945H15.0852L0 17.3992L1.6008 19Z" fill="#EEAF18"/></svg></span><p>Explore Now</p></a>
+      </div>
+      <div class="logo"><img src="images/logo2.png"></div>
+       <div class="subheader">
+      <span class="typing-text">scroll down</span>
+    </div>
+    </section>
+
+    <section class="panel">
+      <h1>Crocent Hello Tech</h1>
+      <div class="site-button">
+        <a href="#"><span><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.6008 19L16.7005 3.91482V17.6291H19V0H1.37086V2.29945H15.0852L0 17.3992L1.6008 19Z" fill="#EEAF18"/></svg></span><p>Explore Now</p></a>
+      </div>
+      <div class="logo"><img src="images/logo3.png"></div>
+       <div class="subheader">
+      <span class="typing-text">scroll down</span>
+    </div>
+    </section>
+
+    <section class="panel">
+      <h1>Crocent Studios</h1>
+      <div class="site-button">
+        <a href="#"><span><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.6008 19L16.7005 3.91482V17.6291H19V0H1.37086V2.29945H15.0852L0 17.3992L1.6008 19Z" fill="#EEAF18"/></svg></span><p>Explore Now</p></a>
+      </div>
+      <div class="logo"><img src="images/logo4.png"></div>
+       <div class="subheader">
+      <span class="typing-text">scroll down</span>
+    </div>
+    </section>
+
+    <section class="panel">
+      <h1>Crocent Fitness</h1>
+      <div class="site-button">
+        <a href="#"><span><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.6008 19L16.7005 3.91482V17.6291H19V0H1.37086V2.29945H15.0852L0 17.3992L1.6008 19Z" fill="#EEAF18"/></svg></span><p>Explore Now</p></a>
+      </div>
+      <div class="logo"><img src="images/logo6.png"></div>
+       <div class="subheader">
+      <span class="typing-text">scroll down</span>
+    </div>
+    </section>
+
+    <section class="panel">
+      <h1>Crocent Fame Finder</h1>
+      <div class="site-button">
+        <a href="#"><span><svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.6008 19L16.7005 3.91482V17.6291H19V0H1.37086V2.29945H15.0852L0 17.3992L1.6008 19Z" fill="#EEAF18"/></svg></span><p>Explore Now</p></a>
+      </div>
+      <div class="logo"><img src="images/logo7.png"></div>
+       <div class="subheader">
+      <span class="typing-text">scroll down</span>
+    </div>
+    </section>
+  </div>
+
+  
+      <section class="panel crocent-hello-tech crocent-logo" style="display: none;">
+    <div class="background-video">
+        <img src="images/hello-tech-bg.png">
+        <div class="video-overlay"></div>
+
+      </div> 
+      <div class="crocent-hello-tech-overlay"></div>
+            
+<div class="background background-animation">
+  <div class='circle'>
+  <div class='circle1'>
+    <div class='circle2'>
+      <div class='circle3'>
+      </div>
+    </div>
+  </div>
+  </div>
+<div>
+
+		<style>
+		 .background-animation .name{
+		  text-align:center;
+		/*   margin-top:140px; */
+		  font-size:37px;
+		  position:relative;
+		  font-family: 'Exo', sans-serif;
+		  color:#fff;
+		}
+		.background-animation .cristalBall{
+		  width: 100%;
+		  margin: auto;
+		  position: absolute;
+		  top: 50%; left: 50%;
+		  transform: translate(-50%,-50%);
+		  z-index:99999;
+		}
+		.background-animation .background{
+		  background-color:white;
+		  width:100%;
+		  height:100%;
+		  position:absolute;
+		  top:0;
+		  left:0;
+		}
+		.background-animation .circle{
+		  background-color:#fffdff;
+		  height:1300px;
+		  border-radius:50%;
+		  width: 1300px;
+		  margin: auto;
+		  position: absolute;
+		  top: 50%; left: 50%;
+		  transform: translate(-50%,-50%);
+		}
+		.background-animation .circle1{
+		  background-color:#fcefff;
+		  height:1000px;
+		  border-radius:50%;
+		  width: 1000px;
+		  margin: auto;
+		  position: absolute;
+		  top: 50%; left: 50%;
+		  transform: translate(-50%,-50%);
+		  animation: circle_pulse3 10s linear infinite;
+		}
+		.background-animation .circle2{
+		  background-color:#f3cafc;
+		  height:700px;
+		  border-radius:50%;
+		  width: 700px;
+		  margin: auto;
+		  position: absolute;
+		  top: 50%; left: 50%;
+		  color:white;
+		  font-size:40px;
+		  transform: translate(-50%,-50%);
+		  animation: circle_pulse 4s linear infinite;
+		}
+		.background-animation .circle3{
+		  background-color:#ee88fd;
+		  height:500px;
+		  border-radius:50%;
+		  width: 500px;
+		  margin: auto;
+		  position: absolute;
+		  top: 50%; left: 50%;
+		  transform: translate(-50%,-50%);
+		  font-size:50px;
+		  animation: circle_pulse2 3s linear infinite;
+		}
+		.background-animation .star {
+		  transform: translate(350px,50px);
+		  opacity:.6;
+		}
+		@keyframes circle_pulse {
+		  0%{width:700px;height:700px;}
+		  50%{width:750px;height:750px;}
+		  100%{width:700px;height:700px;}
+		}
+		@keyframes circle_pulse2 {
+		  0%{width:500px;height:500px;}
+		  50%{width:550px;height:550px;}
+		  100%{width:500px;height:500px;}
+		}
+		@keyframes circle_pulse3 {
+		  0%{width:1000px;height:1000px;}
+		  50%{width:1050px;height:1050px;}
+		  100%{width:1000px;height:1000px;}
+		}
+		</style>
+       <!-- <div class="crocent-hello-tech-img"><img src="images/helo_pn.png"></div> -->
+       
+
+      <div class="header-main main-container">
+        <div class="header-main-logo">
+          <img src="images/hello-tech-logo.png" alt="Crocent Logo">
+        </div>
+        <div class="header-main-menu menu">
+          <ul><li class="rotating-button"><a href="#"><p>contact us</p></a></li></ul>
+        </div>
+      </div>
+<div class="hello-tech-main main-container">
+  <div class="hello-tech-main-content">
+      <div class="headings">
+        <div class="company-main-name">
+          <div class="sub-head"><p>You,ve never Seen An App Like This Before</p></div>
+          <!-- <h1 class="fancy-heading">Hello Tech</h1> -->
+          <div class="variable"><span class="work">HELLO</span> TECH</div>
+          <!-- <span><div class="animated-border"></div></span> -->
+        </div>
+        <div class="company-branch-name">
+          <div class="company-branch-name-info">
+            <p>Driven by your business objectives, focused on unique and innovative approaches to digitally transform your business.</p>
+          </div>
+          <!-- <h1 class="fancy-subheading">Hello Tech</h1> -->
+        </div>
+      </div>
+
+      <div class="site-button">
+        <a href="https://crocentinternational.com/" target="_blank">
+          <span>
+            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.6008 19L16.7005 3.91482V17.6291H19V0H1.37086V2.29945H15.0852L0 17.3992L1.6008 19Z" fill="#01011F"/>
+            </svg>
+          </span>
+          <p>Explore Now</p>
+        </a>
+      </div>
+      <div class="appbuttons">
+          <div class="letstalk" style="width: 31%">
+            <h3>Let's Talk!</h3>
+            <p>Add your question and we will contact you.</p>
+            <div class="site-button">
+        <a href="https://crocentinternational.com/" target="_blank">
+          <span>
+            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.6008 19L16.7005 3.91482V17.6291H19V0H1.37086V2.29945H15.0852L0 17.3992L1.6008 19Z" fill="#01011F"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+          </div>
+           <div class="appbutton">
+                <a href="#" class="downloadbtn"><img src="images/appleapp.png"></a>
+                <a href="#" class="downloadbtn"><img src="images/googleplayapp.png"></a>
+           </div>
+      </div>
+    </div>
+    <div class="hello-tech-image">
+     <img src="images/hello-tech-logo2.png">
+ 
+    </div>  
+
+    
+</div>
+    <div class="social-media-icons">
+       <a href="#"> <svg width="8" height="15" viewBox="0 0 8 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <path d="M6.38249 2.49002H7.79249V0.105022C7.1098 0.0340327 6.42386 -0.00101571 5.73749 2.2398e-05C3.69749 2.2398e-05 2.3025 1.24502 2.3025 3.52502V5.49001H0V8.16001H2.3025V15H5.06249V8.16001H7.35749L7.70249 5.49001H5.06249V3.78752C5.06249 3.00002 5.27249 2.49002 6.38249 2.49002Z" fill="#D1D1D1"/>
+        </svg>
+        </a>
+         <a href="#">
+        <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15 1.37477C14.4383 1.61183 13.8425 1.76743 13.2325 1.83641C13.8679 1.47357 14.3558 0.899003 14.5856 0.21441C13.9815 0.555917 13.3206 0.79653 12.6314 0.925853C12.07 0.356084 11.2703 0 10.3851 0C8.68553 0 7.30758 1.31269 7.30758 2.93174C7.30758 3.16155 7.33482 3.38529 7.38727 3.59992C4.82965 3.47761 2.56207 2.31045 1.0442 0.536666C0.779355 0.969673 0.627598 1.47335 0.627598 2.01057C0.627598 3.02775 1.17094 3.92508 1.99664 4.45086C1.50794 4.43628 1.02999 4.31053 0.602695 4.08411C0.60252 4.09639 0.60252 4.10867 0.60252 4.12101C0.60252 5.5415 1.6633 6.72647 3.07107 6.99581C2.6179 7.11322 2.14256 7.13041 1.68135 7.04605C2.07293 8.21082 3.20947 9.05841 4.55607 9.08213C3.50285 9.86843 2.17588 10.3372 0.734121 10.3372C0.485684 10.3372 0.240762 10.3233 0 10.2962C1.36189 11.128 2.97949 11.6134 4.71738 11.6134C10.3779 11.6134 13.4733 7.14597 13.4733 3.27174C13.4733 3.14458 13.4704 3.01815 13.4644 2.89244C14.0669 2.47751 14.5869 1.96358 15 1.37477Z" fill="#D1D1D1"/>
+        </svg>
+        </a>
+        <a href="#">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_4_64)">
+        <path d="M3.40565 14.0625V4.5745H0.189737V14.0625H3.40565ZM1.79811 3.2783C2.91955 3.2783 3.6176 2.54974 3.6176 1.63927C3.5967 0.708281 2.91959 -6.10352e-05 1.81939 -6.10352e-05C0.719355 -6.10352e-05 0 0.708295 0 1.63927C0 2.54978 0.697873 3.2783 1.77711 3.2783H1.79801H1.79811ZM5.18564 14.0625H8.40155V8.76391C8.40155 8.48034 8.42244 8.19707 8.50737 7.99436C8.73985 7.42779 9.269 6.84099 10.1574 6.84099C11.3211 6.84099 11.7866 7.71107 11.7866 8.98654V14.0624H15.0023V8.62208C15.0023 5.70775 13.4158 4.35175 11.2999 4.35175C9.56504 4.35175 8.80332 5.30268 8.38015 5.95036H8.40162V4.5743H5.18571C5.22792 5.4646 5.18571 14.0623 5.18571 14.0623L5.18564 14.0625Z" fill="#D1D1D1"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_4_64">
+        <rect width="15" height="14.0625" fill="white"/>
+        </clipPath>
+        </defs>
+        </svg>
+        </a>
+        <a href="#">
+        <svg width="15" height="17" viewBox="0 0 15 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_4_61)">
+        <path d="M7.50341 4.64725C5.37395 4.64725 3.65632 6.33804 3.65632 8.43423C3.65632 10.5304 5.37395 12.2212 7.50341 12.2212C9.63287 12.2212 11.3505 10.5304 11.3505 8.43423C11.3505 6.33804 9.63287 4.64725 7.50341 4.64725ZM7.50341 10.8963C6.1273 10.8963 5.0023 9.79214 5.0023 8.43423C5.0023 7.07632 6.12395 5.9722 7.50341 5.9722C8.88288 5.9722 10.0045 7.07632 10.0045 8.43423C10.0045 9.79214 8.87953 10.8963 7.50341 10.8963ZM12.4052 4.49234C12.4052 4.98343 12.0034 5.37564 11.5079 5.37564C11.009 5.37564 10.6106 4.98013 10.6106 4.49234C10.6106 4.00455 11.0123 3.60904 11.5079 3.60904C12.0034 3.60904 12.4052 4.00455 12.4052 4.49234ZM14.9532 5.38882C14.8963 4.2056 14.6217 3.1575 13.7411 2.29398C12.8639 1.43045 11.7992 1.16019 10.5972 1.10086C9.35832 1.03165 5.64515 1.03165 4.40632 1.10086C3.20766 1.15689 2.14293 1.42715 1.26235 2.29068C0.381766 3.1542 0.110561 4.2023 0.0502929 5.38553C-0.0200195 6.60501 -0.0200195 10.2602 0.0502929 11.4796C0.107213 12.6629 0.381766 13.711 1.26235 14.5745C2.14293 15.438 3.20431 15.7083 4.40632 15.7676C5.64515 15.8368 9.35832 15.8368 10.5972 15.7676C11.7992 15.7116 12.8639 15.4413 13.7411 14.5745C14.6184 13.711 14.8929 12.6629 14.9532 11.4796C15.0235 10.2602 15.0235 6.6083 14.9532 5.38882ZM13.3527 12.7881C13.0916 13.4341 12.586 13.9318 11.9264 14.1922C10.9387 14.5778 8.59493 14.4888 7.50341 14.4888C6.4119 14.4888 4.0648 14.5745 3.08042 14.1922C2.42417 13.9351 1.9186 13.4374 1.65409 12.7881C1.26235 11.8158 1.35275 9.50869 1.35275 8.43423C1.35275 7.35977 1.26569 5.04935 1.65409 4.08035C1.91525 3.43436 2.42083 2.93668 3.08042 2.6763C4.06815 2.29068 6.4119 2.37967 7.50341 2.37967C8.59493 2.37967 10.942 2.29398 11.9264 2.6763C12.5826 2.93338 13.0882 3.43106 13.3527 4.08035C13.7445 5.05264 13.6541 7.35977 13.6541 8.43423C13.6541 9.50869 13.7445 11.8191 13.3527 12.7881Z" fill="#D1D1D1"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_4_61">
+        <rect width="15" height="16.875" fill="white"/>
+        </clipPath>
+        </defs>
+        </svg>
+        </a>
+    </div>
+
+
+
+     <button class="scroll-down-btn main-container">
+        <svg width="17" height="45" viewBox="0 0 17 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g opacity="0.65">
+            <rect x="0.5" y="0.5" width="15" height="28" rx="7.5" stroke="white"/>
+            <circle cx="8" cy="7" r="2" fill="white"/>
+            <path d="M1.35355 29.6464C1.15829 29.4512 0.841709 29.4512 0.646447 29.6464C0.451184 29.8417 0.451184 30.1583 0.646447 30.3536L1 30L1.35355 29.6464ZM8.5 37.5L8.14645 37.8536L8.5 38.2071L8.85355 37.8536L8.5 37.5ZM16.3536 30.3536L16.7071 30L16 29.2929L15.6464 29.6464L16 30L16.3536 30.3536ZM1 30L0.646447 30.3536L8.14645 37.8536L8.5 37.5L8.85355 37.1464L1.35355 29.6464L1 30ZM8.5 37.5L8.85355 37.8536L16.3536 30.3536L16 30L15.6464 29.6464L8.14645 37.1464L8.5 37.5Z" fill="white"/>
+            <path d="M1.35355 35.6464C1.15829 35.4512 0.841709 35.4512 0.646447 35.6464C0.451184 35.8417 0.451184 36.1583 0.646447 36.3536L1 36L1.35355 35.6464ZM8.5 43.5L8.14645 43.8536L8.5 44.2071L8.85355 43.8536L8.5 43.5ZM16.3536 36.3536L16.7071 36L16 35.2929L15.6464 35.6464L16 36L16.3536 36.3536ZM1 36L0.646447 36.3536L8.14645 43.8536L8.5 43.5L8.85355 43.1464L1.35355 35.6464L1 36ZM8.5 43.5L8.85355 43.8536L16.3536 36.3536L16 36L15.6464 35.6464L8.14645 43.1464L8.5 43.5Z" fill="white"/>
+            </g>
+        </svg>
+         <span class="pulse-ring"></span>
+        </button>
+
+        <div class="animated-grid-ht left"></div>
+       <!--  <div class="animated-grid-ht right"></div> -->
+        <!-- <ul class="circles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+      </ul> -->
+
+
+      
+    </section>
+
+
+    <section class="panel crocent-hello-tech crocent-logo" style="display: none;">
+    <div class="background-video">
+        <img src="images/hello-tech-bg.png">
+        <div class="video-overlay"></div>
+      </div> 
+      <div class="crocent-hello-tech-overlay"></div>
+
+       <!-- <div class="crocent-hello-tech-img"><img src="images/helo_pn.png"></div> -->
+       
+
+      <div class="header-main main-container">
+        <div class="header-main-logo">
+          <img src="images/hello-tech-logo.png" alt="Crocent Logo">
+        </div>
+        <div class="header-main-menu menu">
+          <ul><li class="rotating-button"><a href="#"><p>contact us</p></a></li></ul>
+        </div>
+      </div>
+<div class="hello-tech-main main-container">
+  <div class="hello-tech-main-content">
+      <div class="headings">
+        <div class="company-main-name">
+          <div class="sub-head"><p>You,ve never Seen An App Like This Before</p></div>
+          <h1 class="fancy-heading">Hello Tech</h1>
+          <!-- <span><div class="animated-border"></div></span> -->
+        </div>
+        <div class="company-branch-name">
+          <div class="company-branch-name-info">
+            <p>Driven by your business objectives, focused on unique and innovative approaches to digitally transform your business.</p>
+          </div>
+          <!-- <h1 class="fancy-subheading">Hello Tech</h1> -->
+        </div>
+      </div>
+
+      <div class="site-button">
+        <a href="https://crocentinternational.com/" target="_blank">
+          <span>
+            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.6008 19L16.7005 3.91482V17.6291H19V0H1.37086V2.29945H15.0852L0 17.3992L1.6008 19Z" fill="#01011F"/>
+            </svg>
+          </span>
+          <p>Explore Now</p>
+        </a>
+      </div>
+      <div class="appbuttons">
+          <div class="letstalk">
+            <h3>Let's Talk!</h3>
+            <p>Add your question and we will contact you.</p>
+            <div class="site-button">
+        <a href="https://crocentinternational.com/" target="_blank">
+          <span>
+            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.6008 19L16.7005 3.91482V17.6291H19V0H1.37086V2.29945H15.0852L0 17.3992L1.6008 19Z" fill="#01011F"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+          </div>
+           <div class="appbutton">
+                <a href="#" class="downloadbtn"><img src="images/appleapp.png"></a>
+                <a href="#" class="downloadbtn"><img src="images/googleplayapp.png"></a>
+           </div>
+      </div>
+    </div>
+    <div class="hello-tech-image">
+     <img src="images/hello-tech-logo2.png">
+    </div>  
+</div>
+    <div class="social-media-icons">
+       <a href="#"> <svg width="8" height="15" viewBox="0 0 8 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <path d="M6.38249 2.49002H7.79249V0.105022C7.1098 0.0340327 6.42386 -0.00101571 5.73749 2.2398e-05C3.69749 2.2398e-05 2.3025 1.24502 2.3025 3.52502V5.49001H0V8.16001H2.3025V15H5.06249V8.16001H7.35749L7.70249 5.49001H5.06249V3.78752C5.06249 3.00002 5.27249 2.49002 6.38249 2.49002Z" fill="#D1D1D1"/>
+        </svg>
+        </a>
+         <a href="#">
+        <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15 1.37477C14.4383 1.61183 13.8425 1.76743 13.2325 1.83641C13.8679 1.47357 14.3558 0.899003 14.5856 0.21441C13.9815 0.555917 13.3206 0.79653 12.6314 0.925853C12.07 0.356084 11.2703 0 10.3851 0C8.68553 0 7.30758 1.31269 7.30758 2.93174C7.30758 3.16155 7.33482 3.38529 7.38727 3.59992C4.82965 3.47761 2.56207 2.31045 1.0442 0.536666C0.779355 0.969673 0.627598 1.47335 0.627598 2.01057C0.627598 3.02775 1.17094 3.92508 1.99664 4.45086C1.50794 4.43628 1.02999 4.31053 0.602695 4.08411C0.60252 4.09639 0.60252 4.10867 0.60252 4.12101C0.60252 5.5415 1.6633 6.72647 3.07107 6.99581C2.6179 7.11322 2.14256 7.13041 1.68135 7.04605C2.07293 8.21082 3.20947 9.05841 4.55607 9.08213C3.50285 9.86843 2.17588 10.3372 0.734121 10.3372C0.485684 10.3372 0.240762 10.3233 0 10.2962C1.36189 11.128 2.97949 11.6134 4.71738 11.6134C10.3779 11.6134 13.4733 7.14597 13.4733 3.27174C13.4733 3.14458 13.4704 3.01815 13.4644 2.89244C14.0669 2.47751 14.5869 1.96358 15 1.37477Z" fill="#D1D1D1"/>
+        </svg>
+        </a>
+        <a href="#">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_4_64)">
+        <path d="M3.40565 14.0625V4.5745H0.189737V14.0625H3.40565ZM1.79811 3.2783C2.91955 3.2783 3.6176 2.54974 3.6176 1.63927C3.5967 0.708281 2.91959 -6.10352e-05 1.81939 -6.10352e-05C0.719355 -6.10352e-05 0 0.708295 0 1.63927C0 2.54978 0.697873 3.2783 1.77711 3.2783H1.79801H1.79811ZM5.18564 14.0625H8.40155V8.76391C8.40155 8.48034 8.42244 8.19707 8.50737 7.99436C8.73985 7.42779 9.269 6.84099 10.1574 6.84099C11.3211 6.84099 11.7866 7.71107 11.7866 8.98654V14.0624H15.0023V8.62208C15.0023 5.70775 13.4158 4.35175 11.2999 4.35175C9.56504 4.35175 8.80332 5.30268 8.38015 5.95036H8.40162V4.5743H5.18571C5.22792 5.4646 5.18571 14.0623 5.18571 14.0623L5.18564 14.0625Z" fill="#D1D1D1"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_4_64">
+        <rect width="15" height="14.0625" fill="white"/>
+        </clipPath>
+        </defs>
+        </svg>
+        </a>
+        <a href="#">
+        <svg width="15" height="17" viewBox="0 0 15 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_4_61)">
+        <path d="M7.50341 4.64725C5.37395 4.64725 3.65632 6.33804 3.65632 8.43423C3.65632 10.5304 5.37395 12.2212 7.50341 12.2212C9.63287 12.2212 11.3505 10.5304 11.3505 8.43423C11.3505 6.33804 9.63287 4.64725 7.50341 4.64725ZM7.50341 10.8963C6.1273 10.8963 5.0023 9.79214 5.0023 8.43423C5.0023 7.07632 6.12395 5.9722 7.50341 5.9722C8.88288 5.9722 10.0045 7.07632 10.0045 8.43423C10.0045 9.79214 8.87953 10.8963 7.50341 10.8963ZM12.4052 4.49234C12.4052 4.98343 12.0034 5.37564 11.5079 5.37564C11.009 5.37564 10.6106 4.98013 10.6106 4.49234C10.6106 4.00455 11.0123 3.60904 11.5079 3.60904C12.0034 3.60904 12.4052 4.00455 12.4052 4.49234ZM14.9532 5.38882C14.8963 4.2056 14.6217 3.1575 13.7411 2.29398C12.8639 1.43045 11.7992 1.16019 10.5972 1.10086C9.35832 1.03165 5.64515 1.03165 4.40632 1.10086C3.20766 1.15689 2.14293 1.42715 1.26235 2.29068C0.381766 3.1542 0.110561 4.2023 0.0502929 5.38553C-0.0200195 6.60501 -0.0200195 10.2602 0.0502929 11.4796C0.107213 12.6629 0.381766 13.711 1.26235 14.5745C2.14293 15.438 3.20431 15.7083 4.40632 15.7676C5.64515 15.8368 9.35832 15.8368 10.5972 15.7676C11.7992 15.7116 12.8639 15.4413 13.7411 14.5745C14.6184 13.711 14.8929 12.6629 14.9532 11.4796C15.0235 10.2602 15.0235 6.6083 14.9532 5.38882ZM13.3527 12.7881C13.0916 13.4341 12.586 13.9318 11.9264 14.1922C10.9387 14.5778 8.59493 14.4888 7.50341 14.4888C6.4119 14.4888 4.0648 14.5745 3.08042 14.1922C2.42417 13.9351 1.9186 13.4374 1.65409 12.7881C1.26235 11.8158 1.35275 9.50869 1.35275 8.43423C1.35275 7.35977 1.26569 5.04935 1.65409 4.08035C1.91525 3.43436 2.42083 2.93668 3.08042 2.6763C4.06815 2.29068 6.4119 2.37967 7.50341 2.37967C8.59493 2.37967 10.942 2.29398 11.9264 2.6763C12.5826 2.93338 13.0882 3.43106 13.3527 4.08035C13.7445 5.05264 13.6541 7.35977 13.6541 8.43423C13.6541 9.50869 13.7445 11.8191 13.3527 12.7881Z" fill="#D1D1D1"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_4_61">
+        <rect width="15" height="16.875" fill="white"/>
+        </clipPath>
+        </defs>
+        </svg>
+        </a>
+    </div>
+
+
+
+     <button class="scroll-down-btn main-container">
+        <svg width="17" height="45" viewBox="0 0 17 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g opacity="0.65">
+            <rect x="0.5" y="0.5" width="15" height="28" rx="7.5" stroke="white"/>
+            <circle cx="8" cy="7" r="2" fill="white"/>
+            <path d="M1.35355 29.6464C1.15829 29.4512 0.841709 29.4512 0.646447 29.6464C0.451184 29.8417 0.451184 30.1583 0.646447 30.3536L1 30L1.35355 29.6464ZM8.5 37.5L8.14645 37.8536L8.5 38.2071L8.85355 37.8536L8.5 37.5ZM16.3536 30.3536L16.7071 30L16 29.2929L15.6464 29.6464L16 30L16.3536 30.3536ZM1 30L0.646447 30.3536L8.14645 37.8536L8.5 37.5L8.85355 37.1464L1.35355 29.6464L1 30ZM8.5 37.5L8.85355 37.8536L16.3536 30.3536L16 30L15.6464 29.6464L8.14645 37.1464L8.5 37.5Z" fill="white"/>
+            <path d="M1.35355 35.6464C1.15829 35.4512 0.841709 35.4512 0.646447 35.6464C0.451184 35.8417 0.451184 36.1583 0.646447 36.3536L1 36L1.35355 35.6464ZM8.5 43.5L8.14645 43.8536L8.5 44.2071L8.85355 43.8536L8.5 43.5ZM16.3536 36.3536L16.7071 36L16 35.2929L15.6464 35.6464L16 36L16.3536 36.3536ZM1 36L0.646447 36.3536L8.14645 43.8536L8.5 43.5L8.85355 43.1464L1.35355 35.6464L1 36ZM8.5 43.5L8.85355 43.8536L16.3536 36.3536L16 36L15.6464 35.6464L8.14645 43.1464L8.5 43.5Z" fill="white"/>
+            </g>
+        </svg>
+         <span class="pulse-ring"></span>
+        </button>
+
+        <!-- <div class="animated-grid-ht2 left"></div>
+        <div class="animated-grid-ht2 right"></div> -->
+        <ul class="circles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+      </ul>
+    </section>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Typewriter function
+    function typeWriter(el, text, speed = 100) {
+      el.classList.add("typing");
+      el.textContent = "";
+      let i = 0;
+      let timer = setInterval(() => {
+        el.textContent += text.charAt(i);
+        i++;
+        if (i >= text.length) {
+          clearInterval(timer);
+          el.classList.remove("typing");
+        }
+      }, speed);
+    }
+
+    // Animate each section on scroll
+    document.querySelectorAll(".panel").forEach((panel) => {
+      const h1 = panel.querySelector("h1");
+      const originalText = h1.textContent;
+      h1.textContent = "";
+
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: panel,
+          scroller: ".container",
+          start: "top center",
+          toggleActions: "play reverse play reverse",
+          onEnter: () => typeWriter(h1, originalText),
+          onEnterBack: () => typeWriter(h1, originalText),
+        },
+      });
+
+      tl.to(h1, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0)
+        .to(panel.querySelector(".site-button"), { opacity: 1, y: 0, duration: 0.8, delay: 1.5, ease: "power3.out" }, 0)
+        .to(panel.querySelector(".logo"), { opacity: 1, scale: 1, duration: 1, delay: 0.3, ease: "back.out(1.7)" }, 0);
+    });
+
+
+    // Animate subheader border and text
+document.querySelectorAll(".panel").forEach((panel) => {
+  const sub = panel.querySelector(".subheader");
+
+  if (sub) {
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: panel,
+        scroller: ".container",
+        start: "top center",
+        toggleActions: "play reverse play reverse",
+      },
+    });
+
+    tl.fromTo(sub.querySelector("::before"), {}, {}); // (pseudo workaround below)
+
+    // Animate the border line drawing (using CSS variable approach)
+    tl.fromTo(sub, 
+      { "--borderHeight": 0 }, 
+      { 
+        "--borderHeight": "100%",
+        duration: 1,
+        ease: "power2.out",
+        onUpdate: function() {
+          // const val = tl.progress() * 100;
+          const val = tl.progress() * 100;
+          sub.style.setProperty("--borderHeight", `${val}%`);
+          sub.style.setProperty("border-image", `linear-gradient(to bottom, #efb221 ${val}%, transparent ${val}%) 1`);
+        }
+      }, 0
+    );
+
+    // Animate text fade-in slightly after
+    tl.to(sub.querySelector("span"), { opacity: 1, delay: 0.2, duration: 0.6 }, 0.5);
+  }
+});
+
+  </script>
+</body>
+</html>
